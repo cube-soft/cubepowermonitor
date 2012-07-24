@@ -274,10 +274,10 @@ namespace ExtendedDotNET.Controls.Progress
 		}
 		//#####
 		private Color m_Color1 = Color.FromArgb( 0 , 255 , 0 );
-		[Description("Set the main color")]
+		[Description("Set the first color")]
 		[Category("_Progress")]
 		[Browsable(true)]
-		public Color MainColor
+		public Color FirstColor
 		{
 			get
 			{
@@ -291,10 +291,10 @@ namespace ExtendedDotNET.Controls.Progress
 		}
 		//#####
 		private Color m_Color2 = Color.FromKnownColor( KnownColor.White );
-		[Description("Set the second color")]
+		[Description("Set the last color")]
 		[Category("_Progress")]
 		[Browsable(true)]
-		public Color SecondColor
+		public Color LastColor
 		{
 			get
 			{
@@ -306,6 +306,24 @@ namespace ExtendedDotNET.Controls.Progress
 				Invalidate();
 			}
 		}
+        //#####
+        private Color m_ColorCenter = Color.FromArgb(0, 255, 0);
+        [Description("Set the center color")]
+        [Category("_Progress")]
+        [Browsable(true)]
+        public Color CenterColor
+        {
+            get
+            {
+                return m_ColorCenter;
+            }
+
+            set
+            {
+                m_ColorCenter = value;
+                Invalidate();
+            }
+        }
 		//#####
 		private Color m_color_Back = Color.FromKnownColor( KnownColor.White );
 		[Description("Set the background color")]
@@ -632,14 +650,19 @@ namespace ExtendedDotNET.Controls.Progress
 								, (int)float_ProgressHeight);
 					}
 
-					LinearGradientBrush brsh_Bar = new LinearGradientBrush( rect_Bar2 , m_Color2 , m_Color1 , (m_FloodStyle == ProgressFloodStyle.Standard) ? 90.0f : 0.0f );
-					float[] factors = {0.0f, 1.0f, 1.0f, 0.0f}; 
-					float[] positions = {0.0f, m_float_BarFlood, 1.0f - m_float_BarFlood, 1.0f};
+					LinearGradientBrush brsh_Bar = new LinearGradientBrush( rect_Bar2 , m_Color1, m_Color2, (m_FloodStyle == ProgressFloodStyle.Standard) ? 90.0f : 0.0f );
+                    //float[] factors = {0.0f, 1.0f, 1.0f, 0.0f}; 
+                    //float[] positions = {0.0f, m_float_BarFlood, 1.0f - m_float_BarFlood, 1.0f};
 
-					Blend blend = new Blend();
-					blend.Factors = factors;
-					blend.Positions = positions; 
-					brsh_Bar.Blend = blend;
+                    //Blend blend = new Blend();
+                    //blend.Factors = factors;
+                    //blend.Positions = positions; 
+                    //brsh_Bar.Blend = blend;
+
+                    ColorBlend cb = new ColorBlend();
+                    cb.Colors = new Color[] { m_Color1, m_ColorCenter, m_Color2 };
+                    cb.Positions = new float[] { 0f, 1 / 2f, 1f };
+                    brsh_Bar.InterpolationColors = cb;
 
 					switch( m_Style )
 					{
@@ -703,14 +726,19 @@ namespace ExtendedDotNET.Controls.Progress
 							, (int)float_ProgressDrawHeight);
 					}
 
-					LinearGradientBrush brsh_Bar = new LinearGradientBrush( rect_Bar2 , m_Color2 , m_Color1 , (m_FloodStyle == ProgressFloodStyle.Standard) ? 0.0f : 90.0f );
-					float[] factors = {0.0f, 1.0f, 1.0f, 0.0f}; 
-					float[] positions = {0.0f, m_float_BarFlood, 1.0f - m_float_BarFlood, 1.0f};
+					LinearGradientBrush brsh_Bar = new LinearGradientBrush( rect_Bar2 , m_Color1 , m_Color2 , (m_FloodStyle == ProgressFloodStyle.Standard) ? 0.0f : 90.0f );
+                    //float[] factors = {0.0f, 1.0f, 1.0f, 0.0f}; 
+                    //float[] positions = {0.0f, m_float_BarFlood, 1.0f - m_float_BarFlood, 1.0f};
 
-					Blend blend = new Blend();
-					blend.Factors = factors;
-					blend.Positions = positions; 
-					brsh_Bar.Blend = blend;
+                    //Blend blend = new Blend();
+                    //blend.Factors = factors;
+                    //blend.Positions = positions; 
+                    //brsh_Bar.Blend = blend;
+
+                    ColorBlend cb = new ColorBlend();
+                    cb.Colors = new Color[] { m_Color1, m_ColorCenter, m_Color2 };
+                    cb.Positions = new float[] { 0f, 1 / 2f, 1f };
+                    brsh_Bar.InterpolationColors = cb;
 
 					switch( m_Style )
 					{
