@@ -38,7 +38,7 @@
             this.ConsumptionLabel = new System.Windows.Forms.Label();
             this.RatioNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.TasktrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.NormalizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ratio50Label = new System.Windows.Forms.Label();
             this.Ratio100Label = new System.Windows.Forms.Label();
@@ -58,19 +58,20 @@
             this.AreaComboBox.FormattingEnabled = true;
             this.AreaComboBox.Location = new System.Drawing.Point(12, 12);
             this.AreaComboBox.Name = "AreaComboBox";
-            this.AreaComboBox.Size = new System.Drawing.Size(80, 20);
+            this.AreaComboBox.Size = new System.Drawing.Size(100, 20);
             this.AreaComboBox.TabIndex = 1;
             this.AreaComboBox.SelectedIndexChanged += new System.EventHandler(this.AreaComboBox_SelectedIndexChanged);
             // 
             // RatioLabel
             // 
             this.RatioLabel.AutoSize = true;
-            this.RatioLabel.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.RatioLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.RatioLabel.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.RatioLabel.ForeColor = System.Drawing.Color.Black;
-            this.RatioLabel.Location = new System.Drawing.Point(274, 28);
+            this.RatioLabel.Location = new System.Drawing.Point(273, 28);
             this.RatioLabel.Margin = new System.Windows.Forms.Padding(0);
             this.RatioLabel.Name = "RatioLabel";
-            this.RatioLabel.Size = new System.Drawing.Size(77, 37);
+            this.RatioLabel.Size = new System.Drawing.Size(74, 37);
             this.RatioLabel.TabIndex = 2;
             this.RatioLabel.Text = "00%";
             // 
@@ -78,9 +79,9 @@
             // 
             this.FooterStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InfoToolStripStatusLabel});
-            this.FooterStatusStrip.Location = new System.Drawing.Point(0, 89);
+            this.FooterStatusStrip.Location = new System.Drawing.Point(0, 83);
             this.FooterStatusStrip.Name = "FooterStatusStrip";
-            this.FooterStatusStrip.Size = new System.Drawing.Size(374, 23);
+            this.FooterStatusStrip.Size = new System.Drawing.Size(370, 23);
             this.FooterStatusStrip.SizingGrip = false;
             this.FooterStatusStrip.TabIndex = 4;
             this.FooterStatusStrip.Text = "statusStrip1";
@@ -94,11 +95,11 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.ConsumptionLabel);
-            this.panel1.Location = new System.Drawing.Point(95, 12);
+            this.panel1.Location = new System.Drawing.Point(115, 12);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 7, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(167, 20);
+            this.panel1.Size = new System.Drawing.Size(147, 20);
             this.panel1.TabIndex = 5;
             // 
             // ConsumptionLabel
@@ -106,7 +107,7 @@
             this.ConsumptionLabel.AutoSize = true;
             this.ConsumptionLabel.Dock = System.Windows.Forms.DockStyle.Right;
             this.ConsumptionLabel.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ConsumptionLabel.Location = new System.Drawing.Point(106, 7);
+            this.ConsumptionLabel.Location = new System.Drawing.Point(86, 7);
             this.ConsumptionLabel.Margin = new System.Windows.Forms.Padding(0);
             this.ConsumptionLabel.Name = "ConsumptionLabel";
             this.ConsumptionLabel.Size = new System.Drawing.Size(61, 12);
@@ -119,34 +120,34 @@
             this.RatioNotifyIcon.ContextMenuStrip = this.TasktrayContextMenuStrip;
             this.RatioNotifyIcon.Text = "RatioNotifyIcon";
             this.RatioNotifyIcon.Visible = true;
-            this.RatioNotifyIcon.DoubleClick += new System.EventHandler(this.NormalizeItem_Click);
+            this.RatioNotifyIcon.DoubleClick += new System.EventHandler(this.OpenItem_Click);
             // 
             // TasktrayContextMenuStrip
             // 
             this.TasktrayContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NormalizeToolStripMenuItem,
+            this.OpenToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.TasktrayContextMenuStrip.Name = "TasktrayContextMenuStrip";
-            this.TasktrayContextMenuStrip.Size = new System.Drawing.Size(125, 48);
+            this.TasktrayContextMenuStrip.Size = new System.Drawing.Size(95, 48);
             // 
-            // NormalizeToolStripMenuItem
+            // OpenToolStripMenuItem
             // 
-            this.NormalizeToolStripMenuItem.Name = "NormalizeToolStripMenuItem";
-            this.NormalizeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.NormalizeToolStripMenuItem.Text = "元に戻す";
-            this.NormalizeToolStripMenuItem.Click += new System.EventHandler(this.NormalizeItem_Click);
+            this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.OpenToolStripMenuItem.Text = "開く";
+            this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.ExitToolStripMenuItem.Text = "終了";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // Ratio50Label
             // 
             this.Ratio50Label.AutoSize = true;
-            this.Ratio50Label.Location = new System.Drawing.Point(6, 63);
+            this.Ratio50Label.Location = new System.Drawing.Point(6, 61);
             this.Ratio50Label.Name = "Ratio50Label";
             this.Ratio50Label.Size = new System.Drawing.Size(17, 12);
             this.Ratio50Label.TabIndex = 7;
@@ -155,7 +156,7 @@
             // Ratio100Label
             // 
             this.Ratio100Label.AutoSize = true;
-            this.Ratio100Label.Location = new System.Drawing.Point(248, 63);
+            this.Ratio100Label.Location = new System.Drawing.Point(248, 61);
             this.Ratio100Label.Name = "Ratio100Label";
             this.Ratio100Label.Size = new System.Drawing.Size(23, 12);
             this.Ratio100Label.TabIndex = 8;
@@ -164,7 +165,7 @@
             // Ratio60Label
             // 
             this.Ratio60Label.AutoSize = true;
-            this.Ratio60Label.Location = new System.Drawing.Point(56, 63);
+            this.Ratio60Label.Location = new System.Drawing.Point(56, 61);
             this.Ratio60Label.Name = "Ratio60Label";
             this.Ratio60Label.Size = new System.Drawing.Size(17, 12);
             this.Ratio60Label.TabIndex = 10;
@@ -173,7 +174,7 @@
             // Ratio70Label
             // 
             this.Ratio70Label.AutoSize = true;
-            this.Ratio70Label.Location = new System.Drawing.Point(106, 63);
+            this.Ratio70Label.Location = new System.Drawing.Point(106, 61);
             this.Ratio70Label.Name = "Ratio70Label";
             this.Ratio70Label.Size = new System.Drawing.Size(17, 12);
             this.Ratio70Label.TabIndex = 11;
@@ -182,7 +183,7 @@
             // Ratio80Label
             // 
             this.Ratio80Label.AutoSize = true;
-            this.Ratio80Label.Location = new System.Drawing.Point(156, 63);
+            this.Ratio80Label.Location = new System.Drawing.Point(156, 61);
             this.Ratio80Label.Name = "Ratio80Label";
             this.Ratio80Label.Size = new System.Drawing.Size(17, 12);
             this.Ratio80Label.TabIndex = 12;
@@ -191,7 +192,7 @@
             // Ratio90Label
             // 
             this.Ratio90Label.AutoSize = true;
-            this.Ratio90Label.Location = new System.Drawing.Point(206, 63);
+            this.Ratio90Label.Location = new System.Drawing.Point(206, 61);
             this.Ratio90Label.Name = "Ratio90Label";
             this.Ratio90Label.Size = new System.Drawing.Size(17, 12);
             this.Ratio90Label.TabIndex = 13;
@@ -226,18 +227,19 @@
             this.RatioProgressBar.ProgressBarStyle = ExtendedDotNET.Controls.Progress.ProgressStyle.Dashed;
             this.RatioProgressBar.Shadow = true;
             this.RatioProgressBar.ShadowOffset = 1;
-            this.RatioProgressBar.Size = new System.Drawing.Size(250, 22);
+            this.RatioProgressBar.Size = new System.Drawing.Size(250, 20);
             this.RatioProgressBar.Step = 1;
             this.RatioProgressBar.TabIndex = 6;
+            this.RatioProgressBar.TabStop = false;
             this.RatioProgressBar.TextAntialias = true;
-            this.RatioProgressBar.Value = 100;
+            this.RatioProgressBar.Value = 50;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(374, 112);
+            this.ClientSize = new System.Drawing.Size(370, 106);
             this.Controls.Add(this.Ratio90Label);
             this.Controls.Add(this.Ratio80Label);
             this.Controls.Add(this.Ratio70Label);
@@ -254,6 +256,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CubePower Monitor";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
@@ -277,7 +280,7 @@
         private System.Windows.Forms.Label ConsumptionLabel;
         private System.Windows.Forms.NotifyIcon RatioNotifyIcon;
         private System.Windows.Forms.ContextMenuStrip TasktrayContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem NormalizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private ExtendedDotNET.Controls.Progress.ProgressBar RatioProgressBar;
         private System.Windows.Forms.Label Ratio50Label;

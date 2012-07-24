@@ -35,9 +35,10 @@ namespace CubePower
         /* ----------------------------------------------------------------- */
         /// constructor
         /* ----------------------------------------------------------------- */
-        public MainForm()
+        public MainForm(UserSetting setting)
         {
             InitializeComponent();
+            this._setting = setting;
             this.Initialize();
         }
 
@@ -52,6 +53,10 @@ namespace CubePower
         /* ----------------------------------------------------------------- */
         private void Initialize()
         {
+            // Title
+            var edition = (IntPtr.Size == 4) ? "x86" : "x64";
+            this.Text = String.Format("CubePower Monitor {0} ({1})", this._setting.Version, edition);
+
             // BackgroundWorker
             this._worker.WorkerSupportsCancellation = true;
             this._worker.WorkerReportsProgress = true;
@@ -65,7 +70,7 @@ namespace CubePower
                 string s = Appearance.AreaString(id);
                 if (s.Length > 0) this.AreaComboBox.Items.Add(s);
             }
-            this.AreaComboBox.SelectedIndex = 0;
+            this.AreaComboBox.SelectedIndex = this.AreaToIndex(this._setting.TargetArea);
 
             // NotifyIcon
             this.RatioNotifyIcon.Icon = Properties.Resources.tasktray;
@@ -89,7 +94,7 @@ namespace CubePower
         /* ----------------------------------------------------------------- */
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            this._area = this.IndexToArea(this.AreaComboBox.SelectedIndex);
+            this._setting.TargetArea = this.IndexToArea(this.AreaComboBox.SelectedIndex);
             this._worker.RunWorkerAsync();
         }
 
@@ -113,18 +118,18 @@ namespace CubePower
 
         /* ----------------------------------------------------------------- */
         ///
-        /// NormalizeItem_Click
+        /// OpenItem_Click
         ///
         /// <summary>
-        /// タスクトレイに表示（最小化）時、「元に戻す」メニューを選択
-        /// した時に実行されるイベントハンドラです。このイベントハンドラは、
+        /// タスクトレイに表示（最小化）時、「開く」メニューを選択した時に
+        /// 実行されるイベントハンドラです。このイベントハンドラは、
         /// タスクトレイに表示されているアイコンを右クリックした時に
         /// 表示されるコンテキストメニューの他、アイコンをダブルクリック
         /// した時にも実行されます。
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
-        private void NormalizeItem_Click(object sender, EventArgs e)
+        private void OpenItem_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
@@ -134,7 +139,7 @@ namespace CubePower
 
         /* ----------------------------------------------------------------- */
         ///
-        /// NormalizeItem_Click
+        /// ExitToolStripMenuItem_Click
         ///
         /// <summary>
         /// タスクトレイに表示されているアイコンを右クリックした時に
@@ -161,7 +166,7 @@ namespace CubePower
         /* ----------------------------------------------------------------- */
         private void AreaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this._area = this.IndexToArea(this.AreaComboBox.SelectedIndex);
+            this._setting.TargetArea = this.IndexToArea(this.AreaComboBox.SelectedIndex);
             this._worker.CancelAsync();
         }
 
@@ -188,7 +193,7 @@ namespace CubePower
 
             try
             {
-                var monitor = new Monitor(this._area);
+                var monitor = new Monitor(this._setting.TargetArea);
                 var interval = new TimeSpan(0, 10, 0);
 
                 while (true)
@@ -245,7 +250,7 @@ namespace CubePower
                 this.InfoToolStripStatusLabel.Text = String.Format("{0} 更新", monitor.Time.ToString());
 
                 this.RatioNotifyIcon.Text = String.Format("{0}\r\n{1} ({2})\r\n{3}",
-                    Appearance.AreaString(this._area), this.ConsumptionLabel.Text, this.RatioLabel.Text, this.InfoToolStripStatusLabel.Text);
+                    Appearance.AreaString(this._setting.TargetArea), this.ConsumptionLabel.Text, this.RatioLabel.Text, this.InfoToolStripStatusLabel.Text);
             }
             else
             {
@@ -272,7 +277,7 @@ namespace CubePower
             if (worker == null) return;
 
             if (!e.Cancelled) System.Threading.Thread.Sleep(5 * 60 * 1000);
-            this._area = this.IndexToArea(this.AreaComboBox.SelectedIndex);
+            this._setting.TargetArea = this.IndexToArea(this.AreaComboBox.SelectedIndex);
             worker.RunWorkerAsync();
         }
 
@@ -295,6 +300,20 @@ namespace CubePower
         private Area IndexToArea(int index)
         {
             return (Area)index;
+        }
+
+        /* ----------------------------------------------------------------- */
+        ///
+        /// AreaToIndex
+        ///
+        /// <summary>
+        /// Area 列挙体から対応するコンボボックスのインデックスへ変換します。
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        private int AreaToIndex(Area area)
+        {
+            return (int)area;
         }
 
         /* ----------------------------------------------------------------- */
@@ -333,7 +352,7 @@ namespace CubePower
         //  変数定義
         /* ----------------------------------------------------------------- */
         #region Variables
-        Area _area = Area.Tokyo;
+        UserSetting _setting;
         BackgroundWorker _worker = new BackgroundWorker();
         #endregion
     }
