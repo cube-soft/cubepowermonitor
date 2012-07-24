@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 
@@ -51,26 +52,38 @@ namespace CubePower
         /* ----------------------------------------------------------------- */
         private void Initialize()
         {
+            // BackgroundWorker
             this._worker.WorkerSupportsCancellation = true;
             this._worker.WorkerReportsProgress = true;
             this._worker.DoWork += new DoWorkEventHandler(BackgroundWorker_DoWork);
             this._worker.ProgressChanged += new ProgressChangedEventHandler(BackgroundWorker_ProgressChanged);
             this._worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BackgroundWorker_RunWorkerCompleted);
 
+            // AreaComboBox
             foreach (Area id in Enum.GetValues(typeof(Area)))
             {
                 string s = Appearance.AreaString(id);
                 if (s.Length > 0) this.AreaComboBox.Items.Add(s);
             }
             this.AreaComboBox.SelectedIndex = 0;
+
+            // NotifyIcon
+            this.RatioNotifyIcon.Icon = Properties.Resources.tasktray;
+            this.RatioNotifyIcon.Visible = false;
         }
+
+        /* ----------------------------------------------------------------- */
+        //  各種イベントハンドラ
+        /* ----------------------------------------------------------------- */
+        #region Event handlers
 
         /* ----------------------------------------------------------------- */
         ///
         /// MainForm_Shown
         ///
         /// <summary>
-        /// 画面が表示された直後に電力状況を更新します。
+        /// 画面が表示された直後に実行されるイベントハンドラです。
+        /// 選択されている地域の電力状況を更新します。
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
@@ -78,6 +91,62 @@ namespace CubePower
         {
             this._area = this.IndexToArea(this.AreaComboBox.SelectedIndex);
             this._worker.RunWorkerAsync();
+        }
+
+        /* ----------------------------------------------------------------- */
+        ///
+        /// MainForm_SizeChanged
+        ///
+        /// <summary>
+        /// フォームのサイズが変更された時に実行されるイベントハンドラです。
+        /// 最小化時、タスクバーには非表示に設定し、代わりにタスクトレイに
+        /// 表示します。
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            bool minimized = (this.WindowState == FormWindowState.Minimized);
+            this.ShowInTaskbar = !minimized;
+            this.RatioNotifyIcon.Visible = minimized;
+        }
+
+        /* ----------------------------------------------------------------- */
+        ///
+        /// NormalizeItem_Click
+        ///
+        /// <summary>
+        /// タスクトレイに表示（最小化）時、「元に戻す」メニューを選択
+        /// した時に実行されるイベントハンドラです。このイベントハンドラは、
+        /// タスクトレイに表示されているアイコンを右クリックした時に
+        /// 表示されるコンテキストメニューの他、アイコンをダブルクリック
+        /// した時にも実行されます。
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        private void NormalizeItem_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        /* ----------------------------------------------------------------- */
+        ///
+        /// NormalizeItem_Click
+        ///
+        /// <summary>
+        /// タスクトレイに表示されているアイコンを右クリックした時に
+        /// 表示されるコンテキストメニューから「囚虜」を選択したときに
+        /// 実行されるイベントハンドラです。
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this._worker.IsBusy) this._worker.CancelAsync();
+            this.Close();
         }
 
         /* ----------------------------------------------------------------- */
@@ -95,7 +164,9 @@ namespace CubePower
             this._area = this.IndexToArea(this.AreaComboBox.SelectedIndex);
             this._worker.CancelAsync();
         }
-        
+
+        #endregion
+
         /* ----------------------------------------------------------------- */
         //  BackgroundWorker 関連のメソッド群
         /* ----------------------------------------------------------------- */
@@ -167,7 +238,8 @@ namespace CubePower
                 this.ConsumptionLabel.Text = String.Format("{0}万kW / {1}万kW", consumption, supply);
 
                 this.RatioLabel.Text = String.Format("{0}%", monitor.ConsumptionRatio);
-                this.RatioProgressBar.Value = monitor.ConsumptionRatio;
+                this.RatioProgressBar.Value = Math.Min(Math.Max(monitor.ConsumptionRatio, this.RatioProgressBar.Minimum), this.RatioProgressBar.Maximum);
+                this.RatioNotifyIcon.Icon = this.GetNotifyIcon(monitor.ConsumptionRatio);
 
                 this.InfoToolStripStatusLabel.Text = String.Format("{0} 現在", monitor.Time.ToString());
             }
@@ -219,6 +291,36 @@ namespace CubePower
         private Area IndexToArea(int index)
         {
             return (Area)index;
+        }
+
+        /* ----------------------------------------------------------------- */
+        ///
+        /// GetNotifyIcon
+        ///
+        /// <summary>
+        /// 電力状況に応じたアイコンを取得します。
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        private Icon GetNotifyIcon(int ratio)
+        {
+            if (ratio < 10) return Properties.Resources.tasktray;
+            else if (ratio <  20) return Properties.Resources.tasktray_10;
+            else if (ratio <  30) return Properties.Resources.tasktray_20;
+            else if (ratio <  40) return Properties.Resources.tasktray_30;
+            else if (ratio <  50) return Properties.Resources.tasktray_40;
+            else if (ratio <  60) return Properties.Resources.tasktray_50;
+            else if (ratio <  70) return Properties.Resources.tasktray_60;
+            else if (ratio <  80) return Properties.Resources.tasktray_70;
+            else if (ratio <  85) return Properties.Resources.tasktray_80;
+            else if (ratio <  90) return Properties.Resources.tasktray_85;
+            else if (ratio <  95) return Properties.Resources.tasktray_90;
+            else if (ratio <  96) return Properties.Resources.tasktray_95;
+            else if (ratio <  97) return Properties.Resources.tasktray_96;
+            else if (ratio <  98) return Properties.Resources.tasktray_97;
+            else if (ratio <  99) return Properties.Resources.tasktray_98;
+            else if (ratio < 100) return Properties.Resources.tasktray_99;
+            else return Properties.Resources.tasktray_100;
         }
 
         #endregion

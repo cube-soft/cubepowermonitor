@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.RatioProgressBar = new System.Windows.Forms.ProgressBar();
             this.AreaComboBox = new System.Windows.Forms.ComboBox();
@@ -36,16 +37,23 @@
             this.InfoToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ConsumptionLabel = new System.Windows.Forms.Label();
+            this.RatioNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.TasktrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.NormalizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FooterStatusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.TasktrayContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // RatioProgressBar
             // 
             this.RatioProgressBar.Location = new System.Drawing.Point(12, 38);
+            this.RatioProgressBar.Minimum = 50;
             this.RatioProgressBar.Name = "RatioProgressBar";
             this.RatioProgressBar.Size = new System.Drawing.Size(250, 20);
             this.RatioProgressBar.TabIndex = 0;
+            this.RatioProgressBar.Value = 50;
             // 
             // AreaComboBox
             // 
@@ -106,6 +114,35 @@
             this.ConsumptionLabel.Text = "0kW / 0kW";
             this.ConsumptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // RatioNotifyIcon
+            // 
+            this.RatioNotifyIcon.ContextMenuStrip = this.TasktrayContextMenuStrip;
+            this.RatioNotifyIcon.Text = "RatioNotifyIcon";
+            this.RatioNotifyIcon.Visible = true;
+            this.RatioNotifyIcon.DoubleClick += new System.EventHandler(this.NormalizeItem_Click);
+            // 
+            // TasktrayContextMenuStrip
+            // 
+            this.TasktrayContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NormalizeToolStripMenuItem,
+            this.ExitToolStripMenuItem});
+            this.TasktrayContextMenuStrip.Name = "TasktrayContextMenuStrip";
+            this.TasktrayContextMenuStrip.Size = new System.Drawing.Size(153, 70);
+            // 
+            // NormalizeToolStripMenuItem
+            // 
+            this.NormalizeToolStripMenuItem.Name = "NormalizeToolStripMenuItem";
+            this.NormalizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.NormalizeToolStripMenuItem.Text = "元に戻す";
+            this.NormalizeToolStripMenuItem.Click += new System.EventHandler(this.NormalizeItem_Click);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ExitToolStripMenuItem.Text = "終了";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -123,10 +160,12 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "CubePower Monitor";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
+            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.FooterStatusStrip.ResumeLayout(false);
             this.FooterStatusStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.TasktrayContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,6 +180,10 @@
         private System.Windows.Forms.ToolStripStatusLabel InfoToolStripStatusLabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label ConsumptionLabel;
+        private System.Windows.Forms.NotifyIcon RatioNotifyIcon;
+        private System.Windows.Forms.ContextMenuStrip TasktrayContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem NormalizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
     }
 }
 
