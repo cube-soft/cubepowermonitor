@@ -100,7 +100,7 @@ namespace CubePower
 
         /* ----------------------------------------------------------------- */
         ///
-        /// MainForm_SizeChanged
+        /// MainForm_Deactivate
         ///
         /// <summary>
         /// フォームのサイズが変更された時に実行されるイベントハンドラです。
@@ -109,11 +109,14 @@ namespace CubePower
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
-        private void MainForm_SizeChanged(object sender, EventArgs e)
+        private void MainForm_Deactivate(object sender, EventArgs e)
         {
-            bool minimized = (this.WindowState == FormWindowState.Minimized);
-            this.ShowInTaskbar = !minimized;
-            this.RatioNotifyIcon.Visible = minimized;
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.ShowInTaskbar = false;
+                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+                this.RatioNotifyIcon.Visible = true;
+            }
         }
 
         /* ----------------------------------------------------------------- */
@@ -131,10 +134,10 @@ namespace CubePower
         /* ----------------------------------------------------------------- */
         private void OpenItem_Click(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
+            this.ShowInTaskbar = true;
+            this.WindowState = FormWindowState.Normal;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.RatioNotifyIcon.Visible = false;
         }
 
         /* ----------------------------------------------------------------- */

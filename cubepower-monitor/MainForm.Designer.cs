@@ -258,8 +258,8 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CubePower Monitor";
+            this.Deactivate += new System.EventHandler(this.MainForm_Deactivate);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
-            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.FooterStatusStrip.ResumeLayout(false);
             this.FooterStatusStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
