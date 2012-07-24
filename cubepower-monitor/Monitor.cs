@@ -72,7 +72,9 @@ namespace CubePower
         /// Update
         ///
         /// <summary>
-        /// 電力情報を更新します。
+        /// 電力情報を更新します。PeekSupply に関しては、早い時刻の場合には
+        /// まだ当日の情報が用意されていない事があるので、当日の情報取得に
+        /// 失敗した場合は、昨日の情報を取得を試みます。
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
@@ -82,8 +84,13 @@ namespace CubePower
             if (consumption < 0) return false;
 
             int supply = this.GetPeekSupply();
-            if (supply < 0 && _supply <= 0) return false;
+            if (supply < 0)
+            {
+                var yesterday = DateTime.Today.AddDays(-1);
+                supply = this.GetPeekSupply(yesterday);
+            }
 
+            if (supply < 0 && _supply <= 0) return false;
             _consumption = consumption;
             _supply = supply;
             return true;
@@ -241,6 +248,34 @@ namespace CubePower
             try
             {
                 var uri = String.Format("http://{0}/peak/{1}/supply/today?output=xml", API_HOST, _area.ToString().ToLower());
+                using (var reader = new XmlTextReader(uri))
+                {
+                    if (!reader.ReadToFollowing("supply")) return dest;
+                    var value = reader.ReadString();
+                    if (value.Length > 0) dest = Int32.Parse(value);
+                }
+            }
+            catch (Exception /* err */) { }
+
+            return dest;
+        }
+
+        /* ----------------------------------------------------------------- */
+        ///
+        /// GetPeekSupply
+        ///
+        /// <summary>
+        /// API 経由で引数に指定した日付のピーク時の電力供給量を取得します。
+        /// </summary>
+        ///
+        /* ----------------------------------------------------------------- */
+        private int GetPeekSupply(DateTime date)
+        {
+            int dest = -1;
+            try
+            {
+                var uri = String.Format("http://{0}/peak/{1}/supply/{2}/{3:D2}/{4:D2}?output=xml",
+                    API_HOST, _area.ToString().ToLower(), date.Year, date.Month, date.Day);
                 using (var reader = new XmlTextReader(uri))
                 {
                     if (!reader.ReadToFollowing("supply")) return dest;

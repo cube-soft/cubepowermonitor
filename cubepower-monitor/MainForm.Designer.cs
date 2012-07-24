@@ -128,19 +128,19 @@
             this.OpenToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.TasktrayContextMenuStrip.Name = "TasktrayContextMenuStrip";
-            this.TasktrayContextMenuStrip.Size = new System.Drawing.Size(95, 48);
+            this.TasktrayContextMenuStrip.Size = new System.Drawing.Size(101, 48);
             // 
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.OpenToolStripMenuItem.Text = "開く";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.ExitToolStripMenuItem.Text = "終了";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 

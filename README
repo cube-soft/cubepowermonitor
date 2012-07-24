@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+  CubePower Monitor
+  Copyright (c) 2012 CubeSoft, Inc. All rights reserved.
+
+  開発・配布：株式会社キューブ・ソフト
+  Mailto: support@cube-soft.jp
+  URL: http://s.cube-soft.jp/setsuden/
+-------------------------------------------------------------------------------
+
+■What's this
+CubePower Monitor は、各電力会社の電力消費量、および電力最大供給量を表示する
+アプリケーションです。デスクトップ上に表示して確認する方法の他に、最小化
+する事によってタスクトレイ上にアイコンから現在の電力消費割合を確認する事もできます。
+
+CubePower Monitor に表示される各種情報は 10 分毎に更新していますが、
+実際に表示される情報は使用している API に依存します。
+
+CubePower Monitor は、以下の API、ライブラリを使用しています。
+それぞれのライブラリについては、記載した URL から取得する事ができます。
+
+- Go 節電プロジェクト API
+  URL: http://api.gosetsuden.jp/
+- Extended .NET Controls
+  URL: http://www.codeproject.com/cs/miscctrl/exdotnet.asp
+
+■バージョン履歴
+2012/07/25 version 1.0.0
+- 最初の公開バージョン
