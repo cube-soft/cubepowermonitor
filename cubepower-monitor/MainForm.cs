@@ -193,7 +193,7 @@ namespace CubePower
 
                 while (true)
                 {
-                    worker.ReportProgress(50, "最新の情報を取得中です...");
+                    worker.ReportProgress(0, "最新の情報を取得中です...");
                     if (monitor.Update()) worker.ReportProgress(100, monitor);
                     else worker.ReportProgress(0, "電力使用状況を取得できませんでした");
 
@@ -205,7 +205,7 @@ namespace CubePower
                             e.Cancel = true;
                             return;
                         }
-                        System.Threading.Thread.Sleep(1000);
+                        System.Threading.Thread.Sleep(100);
                     }
                 }
             }
@@ -221,8 +221,9 @@ namespace CubePower
         /// BackgroundWorker_ProgressChanged
         ///
         /// <summary>
-        /// 電力状況取得中に、ステータスバーに情報を表示する必要のある
-        /// 場合に、このメソッドを通じて更新を行います。
+        /// BackgroundWorker 経由で電力状況の更新があった場合に実行される
+        /// イベントハンドラです。画面に表示されている電力状況に関する
+        /// 情報を更新します。
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
@@ -241,7 +242,10 @@ namespace CubePower
                 this.RatioProgressBar.Value = Math.Min(Math.Max(monitor.ConsumptionRatio, this.RatioProgressBar.Minimum), this.RatioProgressBar.Maximum);
                 this.RatioNotifyIcon.Icon = this.GetNotifyIcon(monitor.ConsumptionRatio);
 
-                this.InfoToolStripStatusLabel.Text = String.Format("{0} 現在", monitor.Time.ToString());
+                this.InfoToolStripStatusLabel.Text = String.Format("{0} 更新", monitor.Time.ToString());
+
+                this.RatioNotifyIcon.Text = String.Format("{0}\r\n{1} ({2})\r\n{3}",
+                    Appearance.AreaString(this._area), this.ConsumptionLabel.Text, this.RatioLabel.Text, this.InfoToolStripStatusLabel.Text);
             }
             else
             {
