@@ -82,6 +82,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\tasktray-100.ico" />
+    <None Include="Resources\tasktray-99.ico" />
+    <None Include="Resources\tasktray-98.ico" />
+    <None Include="Resources\tasktray-97.ico" />
+    <None Include="Resources\tasktray-96.ico" />
+    <None Include="Resources\tasktray-95.ico" />
+    <None Include="Resources\tasktray-90.ico" />
+    <None Include="Resources\tasktray-85.ico" />
+    <None Include="Resources\tasktray-80.ico" />
+    <None Include="Resources\tasktray-70.ico" />
+    <None Include="Resources\tasktray-60.ico" />
+    <None Include="Resources\tasktray-50.ico" />
+    <None Include="Resources\tasktray-40.ico" />
+    <None Include="Resources\tasktray-30.ico" />
+    <None Include="Resources\tasktray-20.ico" />
+    <None Include="Resources\tasktray-10.ico" />
+    <None Include="Resources\tasktray.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
