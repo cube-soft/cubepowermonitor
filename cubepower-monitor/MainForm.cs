@@ -74,7 +74,7 @@ namespace CubePower
 
             // NotifyIcon
             this.RatioNotifyIcon.Icon = Properties.Resources.tasktray;
-            this.RatioNotifyIcon.Visible = false;
+            this.RatioNotifyIcon.Visible = true;
         }
 
         /* ----------------------------------------------------------------- */
@@ -100,22 +100,22 @@ namespace CubePower
 
         /* ----------------------------------------------------------------- */
         ///
-        /// MainForm_Deactivate
+        /// MainForm_FormClosing
         ///
         /// <summary>
-        /// フォームのサイズが変更された時に実行されるイベントハンドラです。
-        /// 最小化時、タスクバーには非表示に設定し、代わりにタスクトレイに
-        /// 表示します。
+        /// Close() メソッドが実行された時に実行されるイベントハンドラです。
+        /// ユーザが×ボタンを押した場合にはタスクトレイにのみ表示し、
+        /// プロセス自体の終了は、タスクトレイのメニューから「終了」を
+        /// 選択した場合のみとします。
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
-        private void MainForm_Deactivate(object sender, EventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
+            if (!this._exit)
             {
-                this.ShowInTaskbar = false;
-                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-                this.RatioNotifyIcon.Visible = true;
+                this.Hide();
+                e.Cancel = true;
             }
         }
 
@@ -134,10 +134,9 @@ namespace CubePower
         /* ----------------------------------------------------------------- */
         private void OpenItem_Click(object sender, EventArgs e)
         {
-            this.ShowInTaskbar = true;
+            this.Show();
             this.WindowState = FormWindowState.Normal;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.RatioNotifyIcon.Visible = false;
+            this.Activate();
         }
 
         /* ----------------------------------------------------------------- */
@@ -146,14 +145,16 @@ namespace CubePower
         ///
         /// <summary>
         /// タスクトレイに表示されているアイコンを右クリックした時に
-        /// 表示されるコンテキストメニューから「囚虜」を選択したときに
-        /// 実行されるイベントハンドラです。
+        /// 表示されるコンテキストメニューから「終了」を選択したときに
+        /// 実行されるイベントハンドラです。CubePower Monitor は、
+        /// このイベントからのみプロセスが終了します。
         /// </summary>
         ///
         /* ----------------------------------------------------------------- */
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this._worker.IsBusy) this._worker.CancelAsync();
+            this._exit = true;
             this.Close();
         }
 
@@ -259,7 +260,12 @@ namespace CubePower
             {
                 var message = e.UserState as string;
                 if (message == null) return;
+
                 this.InfoToolStripStatusLabel.Text = message;
+                this.ConsumptionLabel.Text = "0kW / 0kW";
+                this.RatioLabel.Text = "00%";
+                this.RatioProgressBar.Value = 50;
+                this.RatioNotifyIcon.Icon = this.GetNotifyIcon(0);
             }
         }
 
@@ -357,6 +363,7 @@ namespace CubePower
         #region Variables
         UserSetting _setting;
         BackgroundWorker _worker = new BackgroundWorker();
+        bool _exit = false;
         #endregion
     }
 }
