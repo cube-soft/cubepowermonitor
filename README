@@ -9,11 +9,19 @@
 
 ■What's this
 CubePower Monitor は、各電力会社の電力消費量、および電力最大供給量を表示する
-アプリケーションです。デスクトップ上に表示して確認する方法の他に、最小化
-する事によってタスクトレイ上にアイコンから現在の電力消費割合を確認する事もできます。
+アプリケーションです。デスクトップ上に表示して確認する方法の他に、タスクトレイ上に
+表示されるアイコンから現在の電力消費割合を確認する事もできます。
+
+尚、CubePower Monitor は「閉じる」ボタン（×ボタン）を押してもタスクトレイには
+表示され続けます。タスクトレイ上にも非表示にして完全に終了する場合は、
+タスクトレイに表示されているアイコンを右クリックして「終了」メニューを選択して下さい。
 
 CubePower Monitor に表示される各種情報は 10 分毎に更新していますが、
 実際に表示される情報は使用している API に依存します。
+
+CubePower Monitor を使用するためには、Microsoft .NetFramework 2.0 がインストール
+されている必要があります。Microsoft .NetFramework 2.0 は、以下の URL からダウンロードして下さい。
+http://www.microsoft.com/downloads/details.aspx?FamilyId=0856eacb-4362-4b0d-8edd-aab15c5e04f5&displaylang=ja
 
 CubePower Monitor は、以下の API、ライブラリを使用しています。
 それぞれのライブラリについては、記載した URL から取得する事ができます。
@@ -24,5 +32,5 @@ CubePower Monitor は、以下の API、ライブラリを使用しています。
   URL: http://www.codeproject.com/cs/miscctrl/exdotnet.asp
 
 ■バージョン履歴
-2012/07/25 version 1.0.0
+2012/07/26 version 1.0.0
 - 最初の公開バージョン

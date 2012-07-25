@@ -109,9 +109,135 @@ namespace CubePower.Properties {
             }
         }
         
+        internal static System.Drawing.Icon tasktray_51 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_51", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_52 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_52", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_53 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_53", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_54 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_54", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_55 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_55", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_56 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_56", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_57 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_57", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_58 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_58", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_59 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_59", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon tasktray_60 {
             get {
                 object obj = ResourceManager.GetObject("tasktray_60", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_61 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_61", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_62 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_62", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_63 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_63", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_64 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_64", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_65 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_65", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_66 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_66", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_67 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_67", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_68 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_68", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_69 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_69", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -123,9 +249,100 @@ namespace CubePower.Properties {
             }
         }
         
+        internal static System.Drawing.Icon tasktray_71 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_71", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_72 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_72", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_73 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_73", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_74 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_74", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_75 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_75", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_76 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_76", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_77 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_77", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_78 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_78", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_79 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_79", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon tasktray_80 {
             get {
                 object obj = ResourceManager.GetObject("tasktray_80", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_81 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_81", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_82 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_82", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_83 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_83", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_84 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_84", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -137,9 +354,65 @@ namespace CubePower.Properties {
             }
         }
         
+        internal static System.Drawing.Icon tasktray_86 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_86", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_87 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_87", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_88 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_88", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_89 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_89", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon tasktray_90 {
             get {
                 object obj = ResourceManager.GetObject("tasktray_90", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_91 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_91", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_92 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_92", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_93 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_93", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon tasktray_94 {
+            get {
+                object obj = ResourceManager.GetObject("tasktray_94", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

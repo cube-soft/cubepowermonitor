@@ -341,18 +341,63 @@ namespace CubePower
             else if (ratio <  30) return Properties.Resources.tasktray_20;
             else if (ratio <  40) return Properties.Resources.tasktray_30;
             else if (ratio <  50) return Properties.Resources.tasktray_40;
-            else if (ratio <  60) return Properties.Resources.tasktray_50;
-            else if (ratio <  70) return Properties.Resources.tasktray_60;
-            else if (ratio <  80) return Properties.Resources.tasktray_70;
-            else if (ratio <  85) return Properties.Resources.tasktray_80;
-            else if (ratio <  90) return Properties.Resources.tasktray_85;
-            else if (ratio <  95) return Properties.Resources.tasktray_90;
-            else if (ratio <  96) return Properties.Resources.tasktray_95;
-            else if (ratio <  97) return Properties.Resources.tasktray_96;
-            else if (ratio <  98) return Properties.Resources.tasktray_97;
-            else if (ratio <  99) return Properties.Resources.tasktray_98;
-            else if (ratio < 100) return Properties.Resources.tasktray_99;
-            else return Properties.Resources.tasktray_100;
+
+            // 50 - 100 は全て対応するアイコンが存在する
+            switch (ratio) {
+                case 50: return Properties.Resources.tasktray_50;
+                case 51: return Properties.Resources.tasktray_51;
+                case 52: return Properties.Resources.tasktray_52;
+                case 53: return Properties.Resources.tasktray_53;
+                case 54: return Properties.Resources.tasktray_54;
+                case 55: return Properties.Resources.tasktray_55;
+                case 56: return Properties.Resources.tasktray_56;
+                case 57: return Properties.Resources.tasktray_57;
+                case 58: return Properties.Resources.tasktray_58;
+                case 59: return Properties.Resources.tasktray_59;
+                case 60: return Properties.Resources.tasktray_60;
+                case 61: return Properties.Resources.tasktray_61;
+                case 62: return Properties.Resources.tasktray_62;
+                case 63: return Properties.Resources.tasktray_63;
+                case 64: return Properties.Resources.tasktray_64;
+                case 65: return Properties.Resources.tasktray_65;
+                case 66: return Properties.Resources.tasktray_66;
+                case 67: return Properties.Resources.tasktray_67;
+                case 68: return Properties.Resources.tasktray_68;
+                case 69: return Properties.Resources.tasktray_69;
+                case 70: return Properties.Resources.tasktray_70;
+                case 71: return Properties.Resources.tasktray_71;
+                case 72: return Properties.Resources.tasktray_72;
+                case 73: return Properties.Resources.tasktray_73;
+                case 74: return Properties.Resources.tasktray_74;
+                case 75: return Properties.Resources.tasktray_75;
+                case 76: return Properties.Resources.tasktray_76;
+                case 77: return Properties.Resources.tasktray_77;
+                case 78: return Properties.Resources.tasktray_78;
+                case 79: return Properties.Resources.tasktray_79;
+                case 80: return Properties.Resources.tasktray_80;
+                case 81: return Properties.Resources.tasktray_81;
+                case 82: return Properties.Resources.tasktray_82;
+                case 83: return Properties.Resources.tasktray_83;
+                case 84: return Properties.Resources.tasktray_84;
+                case 85: return Properties.Resources.tasktray_85;
+                case 86: return Properties.Resources.tasktray_86;
+                case 87: return Properties.Resources.tasktray_87;
+                case 88: return Properties.Resources.tasktray_88;
+                case 89: return Properties.Resources.tasktray_89;
+                case 90: return Properties.Resources.tasktray_90;
+                case 91: return Properties.Resources.tasktray_91;
+                case 92: return Properties.Resources.tasktray_92;
+                case 93: return Properties.Resources.tasktray_93;
+                case 94: return Properties.Resources.tasktray_94;
+                case 95: return Properties.Resources.tasktray_95;
+                case 96: return Properties.Resources.tasktray_96;
+                case 97: return Properties.Resources.tasktray_97;
+                case 98: return Properties.Resources.tasktray_98;
+                case 99: return Properties.Resources.tasktray_99;
+                case 100: return Properties.Resources.tasktray_100;
+                default: break;
+            }
+            return Properties.Resources.tasktray;
         }
 
         #endregion
