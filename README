@@ -4,7 +4,7 @@
 
   開発・配布：株式会社キューブ・ソフト
   Mailto: support@cube-soft.jp
-  URL: http://s.cube-soft.jp/setsuden/
+  URL: http://www.cube-soft.jp/cubelab/
 -------------------------------------------------------------------------------
 
 ■What's this
@@ -19,18 +19,20 @@ CubePower Monitor は、各電力会社の電力消費量、および電力最大供給量を表示する
 CubePower Monitor に表示される各種情報は 10 分毎に更新していますが、
 実際に表示される情報は使用している API に依存します。
 
-CubePower Monitor を使用するためには、Microsoft .NetFramework 2.0 がインストール
-されている必要があります。Microsoft .NetFramework 2.0 は、以下の URL からダウンロードして下さい。
-http://www.microsoft.com/downloads/details.aspx?FamilyId=0856eacb-4362-4b0d-8edd-aab15c5e04f5&displaylang=ja
+CubePower Monitor を使用するためには、Microsoft .NET Framework 2.0 がインストール
+されている必要があります。Microsoft .NET Framework 2.0 は、以下の URL からダウンロードして下さい。
+http://www.microsoft.com/ja-jp/download/details.aspx?id=1639
 
-CubePower Monitor は、以下の API、ライブラリを使用しています。
+CubePower Monitor は、以下のライブラリを使用しています。
 それぞれのライブラリについては、記載した URL から取得する事ができます。
 
-- Go 節電プロジェクト API
-  URL: http://api.gosetsuden.jp/
 - Extended .NET Controls
   URL: http://www.codeproject.com/cs/miscctrl/exdotnet.asp
 
 ■バージョン履歴
+2013/07/01 version 1.0.1
+- Go 節電プロジェクト API 経由ではなく、各電力会社から直接データを取得するように修正
+- 北陸電力、四国電力、中国電力、北海道電力に対応
+
 2012/07/26 version 1.0.0
 - 最初の公開バージョン
