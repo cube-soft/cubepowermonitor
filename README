@@ -31,22 +31,24 @@ CubePower Monitor は、以下のライブラリを使用しています。
 
 また、CubePower Monitor は以下の各電力会社から提供されているデータを利用しています。
 
-- 東京電力
-  URL: http://www.tepco.co.jp/forecast/
-- 関西電力
-  URL: http://www.kepco.co.jp/setsuden/graph/
-- 中部電力
-  URL: http://denki-yoho.chuden.jp/
-- 九州電力
-  URL: http://www.kyuden.co.jp/power_usages/pc.html
+- 北海道電力
+  URL: http://denkiyoho.hepco.co.jp/forecast.html
 - 東北電力
   URL: http://setsuden.tohoku-epco.co.jp/graph.html
 - 北陸電力
   URL: http://www.setsuden-rikuden.jp/
+- 東京電力
+  URL: http://www.tepco.co.jp/forecast/
+- 中部電力
+  URL: http://denki-yoho.chuden.jp/
+- 関西電力
+  URL: http://www.kepco.co.jp/setsuden/graph/
+- 中国電力
+  URL: http://www.energia.co.jp/jukyuu/
 - 四国電力
   URL: http://www.yonden.co.jp/denkiyoho/
-- 北海道電力
-  URL: http://denkiyoho.hepco.co.jp/forecast.html
+- 九州電力
+  URL: http://www.kyuden.co.jp/power_usages/pc.html
 
 ■バージョン履歴
 2013/07/01 version 1.0.1
