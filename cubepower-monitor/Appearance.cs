@@ -52,7 +52,7 @@ namespace CubePower
                 case Area.Kansai:   return "関西電力";
                 case Area.Chugoku:  return "中国電力";
                 case Area.Shikoku:  return "四国電力";
-                case Area.Kyushu:   return "九州電力";                
+                case Area.Kyushu:   return "九州電力";
                 default: break;
             }
             return "Unknown";
