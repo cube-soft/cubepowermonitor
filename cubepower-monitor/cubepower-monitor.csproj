@@ -85,7 +85,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgressBar.cs">
       <SubType>UserControl</SubType>
@@ -195,10 +194,21 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CubePowerLib\CubePower.Monitoring\CubePower.Monitoring.csproj">
+      <Project>{D1BEF463-87D1-47D6-9690-A9F3A05408C7}</Project>
+      <Name>CubePower.Monitoring</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)release\$(PlatformName)\
-copy $(TargetPath).config $(SolutionDir)release\$(PlatformName)\</PostBuildEvent>
+copy $(TargetPath).config $(SolutionDir)release\$(PlatformName)\
+copy $(TargetDir)*.dll $(SolutionDir)release\$(PlatformName)\</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -20,6 +20,7 @@
 /* ------------------------------------------------------------------------- */
 using System;
 using Microsoft.Win32;
+using CubePower.Monitoring;
 
 namespace CubePower
 {
