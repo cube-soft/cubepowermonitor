@@ -24,6 +24,7 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
+using CubePower.Monitoring;
 
 namespace CubePower
 {
@@ -197,13 +198,44 @@ namespace CubePower
 
             try
             {
-                var monitor = new Monitor(this._setting.TargetArea);
+                Client client = null;
+                switch (this._setting.TargetArea)
+                { 
+                    case Area.Chubu:
+                        client = new ChubuClient();
+                        break;
+                    case Area.Chugoku:
+                        client = new ChugokuClient();
+                        break;
+                    case Area.Hokkaido:
+                        client = new HokkaidoClient();
+                        break;
+                    case Area.Hokuriku:
+                        client = new HokurikuClient();
+                        break;
+                    case Area.Kansai:
+                        client = new KansaiClient();
+                        break;
+                    case Area.Kyushu:
+                        client = new KyushuClient();
+                        break;
+                    case Area.Shikoku:
+                        client = new ShikokuClient();
+                        break;
+                    case Area.Tohoku:
+                        client = new TohokuClient();
+                        break;
+                    case Area.Tokyo:
+                        client = new TokyoClient();
+                        break;
+                }
                 var interval = new TimeSpan(0, 10, 0);
 
                 while (true)
                 {
                     worker.ReportProgress(0, "最新の情報を取得中です...");
-                    if (monitor.Update()) worker.ReportProgress(100, monitor);
+                    var response = client.GetResponse(DateTime.Now);
+                    if (response != null) worker.ReportProgress(100, response);
                     else worker.ReportProgress(0, "電力使用状況を取得できませんでした");
 
                     var latest = DateTime.Now;
@@ -240,18 +272,20 @@ namespace CubePower
         {
             if (e.ProgressPercentage > 0)
             {
-                var monitor = e.UserState as Monitor;
-                if (monitor == null) return;
+                var response = e.UserState as Response;
+                if (response == null) return;
 
-                int consumption = monitor.Consumption / 10000;
-                int supply = monitor.PeekSupply / 10000;
+                //int consumption = response.Usage / 10000;
+                //int supply = response.Capacity / 10000;
+                int consumption = response.Usage;
+                int supply = response.Capacity;
                 this.ConsumptionLabel.Text = String.Format("{0}万kW / {1}万kW", consumption, supply);
 
-                this.RatioLabel.Text = String.Format("{0}%", monitor.ConsumptionRatio);
-                this.RatioProgressBar.Value = Math.Min(Math.Max(monitor.ConsumptionRatio, this.RatioProgressBar.Minimum), this.RatioProgressBar.Maximum);
-                this.RatioNotifyIcon.Icon = this.GetNotifyIcon(monitor.ConsumptionRatio);
+                this.RatioLabel.Text = String.Format("{0}%", response.UsageRatio);
+                this.RatioProgressBar.Value = Math.Min(Math.Max(response.UsageRatio, this.RatioProgressBar.Minimum), this.RatioProgressBar.Maximum);
+                this.RatioNotifyIcon.Icon = this.GetNotifyIcon(response.UsageRatio);
 
-                this.InfoToolStripStatusLabel.Text = String.Format("{0} 更新", monitor.Time.ToString());
+                this.InfoToolStripStatusLabel.Text = String.Format("{0} 更新", response.Time.ToString());
 
                 this.RatioNotifyIcon.Text = String.Format("{0}\r\n{1} ({2})\r\n{3}",
                     Appearance.AreaString(this._setting.TargetArea), this.ConsumptionLabel.Text, this.RatioLabel.Text, this.InfoToolStripStatusLabel.Text);

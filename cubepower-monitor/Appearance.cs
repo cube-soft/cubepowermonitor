@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CubePower.Monitoring;
 
 namespace CubePower
 {
@@ -43,11 +44,15 @@ namespace CubePower
         {
             switch (id)
             {
-                case Area.Tokyo: return "東京電力";
-                case Area.Tohoku: return "東北電力";
-                case Area.Kansai: return "関西電力";
-                case Area.Chubu: return "中部電力";
-                case Area.Kyushu: return "九州電力";
+                case Area.Chubu:    return "中部電力";
+                case Area.Chugoku:  return "中国電力";
+                case Area.Hokkaido: return "北海道電力";
+                case Area.Hokuriku: return "北陸電力";
+                case Area.Kansai:   return "関西電力";
+                case Area.Kyushu:   return "九州電力";
+                case Area.Shikoku:  return "四国電力";
+                case Area.Tohoku:   return "東北電力";
+                case Area.Tokyo:    return "東京電力";
                 default: break;
             }
             return "Unknown";
